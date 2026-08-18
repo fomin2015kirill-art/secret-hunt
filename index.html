@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Secret Hunt</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+
+    background:
+        radial-gradient(circle at 20% 20%,#202936 0,transparent 30%),
+        radial-gradient(circle at 80% 80%,#171d26 0,transparent 35%),
+        #080b10;
+
+    color:#e8edf3;
+    font-family:Arial,sans-serif;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+/* APP */
+
+.app{
+    width:min(92%,720px);
+    position:relative;
+}
+
+/* TOP */
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.logo{
+    font-size:14px;
+    letter-spacing:5px;
+    font-weight:bold;
+}
+
+.status{
+    font-size:10px;
+    letter-spacing:2px;
+    color:#687482;
+}
+
+.status::before{
+    content:"";
+
+    display:inline-block;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#79ffa8;
+
+    box-shadow:0 0 12px #79ffa8;
+
+    margin-right:7px;
+}
+
+/* PANEL */
+
+.panel{
+    position:relative;
+
+    padding:45px 35px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.035);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.07),
+        0 25px 70px rgba(0,0,0,.55);
+}
+
+.panel::before{
+    content:"";
+
+    position:absolute;
+
+    width:160px;
+    height:160px;
+
+    top:-80px;
+    right:-80px;
+
+    background:rgba(255,255,255,.06);
+
+    filter:blur(50px);
+
+    pointer-events:none;
+}
+
+/* TITLE */
+
+.title{
+    font-size:clamp(38px,10vw,76px);
+
+    letter-spacing:12px;
+
+    margin:0;
+
+    font-weight:800;
+
+    text-shadow:
+        0 5px 25px rgba(0,0,0,.8);
+}
+
+.subtitle{
+    margin-top:12px;
+
+    color:#7f8a96;
+
+    letter-spacing:1px;
+}
+
+/* MODULES */
+
+.modules{
+    margin-top:40px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+}
+
+.module{
+    min-height:100px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.025);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.04),
+        0 10px 25px rgba(0,0,0,.3);
+
+    transition:.25s;
+
+    cursor:pointer;
+}
+
+.module:hover{
+    transform:translateY(-3px);
+
+    background:rgba(255,255,255,.055);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 15px 35px rgba(0,0,0,.45);
+}
+
+.icon{
+    font-size:22px;
+
+    margin-bottom:14px;
+}
+
+.label{
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    color:#65717d;
+}
+
+.value{
+    margin-top:5px;
+
+    font-size:18px;
+}
+
+/* SEARCH */
+
+.search{
+    margin-top:15px;
+
+    height:64px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:0 20px;
+
+    border-radius:18px;
+
+    background:rgba(0,0,0,.22);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    box-shadow:
+        inset 0 2px 8px rgba(0,0,0,.35),
+        0 8px 25px rgba(0,0,0,.25);
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.search:hover{
+    background:rgba(255,255,255,.035);
+
+    transform:translateY(-2px);
+}
+
+.search-icon{
+    font-size:20px;
+
+    color:#75808b;
+}
+
+.search-text{
+    color:#59646f;
+
+    font-size:13px;
+
+    letter-spacing:1px;
+}
+
+/* BOTTOM */
+
+.bottom{
+    margin-top:15px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#505b66;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+}
+
+/* SECRET OBJECT */
+
+.secret{
+    position:fixed;
+
+    width:12px;
+    height:12px;
+
+    bottom:17px;
+    right:18px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.015);
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.01);
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.secret:hover{
+    background:rgba(255,255,255,.15);
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,.08);
+}
+
+/* POPUP */
+
+.popup{
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.72);
+
+    backdrop-filter:blur(12px);
+
+    z-index:20;
+
+    animation:fadeIn .35s ease;
+}
+
+.popup-box{
+    width:min(85%,400px);
+
+    padding:35px;
+
+    border-radius:26px;
+
+    background:rgba(18,22,28,.94);
+
+    border:1px solid rgba(121,255,168,.35);
+
+    box-shadow:
+        0 0 0 1px rgba(121,255,168,.04),
+        0 0 50px rgba(121,255,168,.12),
+        0 30px 90px rgba(0,0,0,.8);
+
+    text-align:center;
+
+    animation:
+        secretAppear .6s cubic-bezier(.17,.89,.32,1.28);
+}
+
+.popup-box h2{
+    margin-top:0;
+
+    color:#79ffa8;
+
+    letter-spacing:3px;
+
+    animation:
+        glow 1.5s infinite alternate;
+}
+
+.popup-box p{
+    color:#8b96a1;
+
+    line-height:1.5;
+}
+
+.close{
+    margin-top:15px;
+
+    padding:10px 18px;
+
+    border:1px solid rgba(121,255,168,.2);
+
+    border-radius:12px;
+
+    background:rgba(121,255,168,.05);
+
+    color:white;
+
+    cursor:pointer;
+}
+
+.close:hover{
+    background:rgba(121,255,168,.12);
+}
+
+/* FLASH */
+
+#flash{
+    position:fixed;
+
+    inset:0;
+
+    background:#79ffa8;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:50;
+}
+
+.flash{
+    animation:flash .45s ease;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+@keyframes secretAppear{
+
+    0%{
+        opacity:0;
+
+        transform:
+            scale(.55)
+            translateY(30px);
+    }
+
+    60%{
+        transform:
+            scale(1.06)
+            translateY(-5px);
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+
+}
+
+@keyframes glow{
+
+    from{
+        text-shadow:
+            0 0 5px rgba(121,255,168,.2);
+    }
+
+    to{
+        text-shadow:
+            0 0 20px rgba(121,255,168,.65);
+    }
+
+}
+
+@keyframes flash{
+
+    0%{
+        opacity:0;
+    }
+
+    20%{
+        opacity:.18;
+    }
+
+    100%{
+        opacity:0;
+    }
+
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .panel{
+        padding:30px 20px;
+    }
+
+    .title{
+        letter-spacing:7px;
+    }
+
+    .modules{
+        grid-template-columns:1fr;
+    }
+
+    .module{
+        min-height:75px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="top">
+
+        <div class="logo">
+            S.H
+        </div>
+
+        <div class="status">
+            SYSTEM ONLINE
+        </div>
+
+    </div>
+
+
+    <main class="panel">
+
+        <h1 class="title">
+            SECRET
+            <br>
+            HUNT
+        </h1>
+
+        <div class="subtitle">
+            Не ищи очевидное.
+        </div>
+
+
+        <div class="modules">
+
+            <div class="module">
+                <div class="icon">◉</div>
+
+                <div class="label">
+                    FOUND
+                </div>
+
+                <div
+                    class="value"
+                    id="found">
+                    0
+                </div>
+            </div>
+
+
+            <div class="module">
+                <div class="icon">◇</div>
+
+                <div class="label">
+                    UNKNOWN
+                </div>
+
+                <div class="value">
+                    ???
+                </div>
+            </div>
+
+
+            <div class="module">
+                <div class="icon">▣</div>
+
+                <div class="label">
+                    STATUS
+                </div>
+
+                <div class="value">
+                    SEARCH
+                </div>
+            </div>
+
+        </div>
+
+
+        <div
+            class="search"
+            onclick="search()">
+
+            <div class="search-icon">
+                ⌕
+            </div>
+
+            <div class="search-text">
+                SEARCH FOR SOMETHING...
+            </div>
+
+        </div>
+
+
+        <div class="bottom">
+
+            <span>
+                SECRET HUNT
+            </span>
+
+            <span>
+                v0.1
+            </span>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- СЕКРЕТНЫЙ ЭЛЕМЕНТ -->
+
+<div
+    class="secret"
+    onclick="secretFound()">
+</div>
+
+
+<!-- ОКНО НАЙДЕННОГО СЕКРЕТА -->
+
+<div
+    class="popup"
+    id="popup">
+
+    <div class="popup-box">
+
+        <h2>
+            ◈ SECRET FOUND
+        </h2>
+
+        <p>
+            Ты нашёл первый секрет.
+            Но сколько их ещё осталось?
+        </p>
+
+        <button
+            class="close"
+            onclick="closePopup()">
+
+            продолжить
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ВСПЫШКА -->
+
+<div id="flash"></div>
+
+
+<script>
+
+let found =
+    Number(
+        localStorage.getItem("secretFound")
+    ) || 0;
+
+
+document.getElementById("found").textContent =
+    found;
+
+
+/* ПОИСК */
+
+function search(){
+
+    const messages = [
+
+        "Ничего очевидного не найдено.",
+
+        "Слишком очевидно.",
+
+        "Ты ищешь не там.",
+
+        "Система ничего не сообщает.",
+
+        "Интересно... ты действительно проверил всё?"
+
+    ];
+
+    const random =
+        messages[
+            Math.floor(
+                Math.random() * messages.length
+            )
+        ];
+
+    alert(random);
+
+}
+
+
+/* СЕКРЕТ */
+
+function secretFound(){
+
+    if(
+        localStorage.getItem("secret1")
+    ){
+        return;
+    }
+
+
+    /* ЭФФЕКТ ВСПЫШКИ */
+
+    const flash =
+        document.getElementById("flash");
+
+    flash.classList.remove("flash");
+
+    void flash.offsetWidth;
+
+    flash.classList.add("flash");
+
+
+    /* СОХРАНЕНИЕ */
+
+    localStorage.setItem(
+        "secret1",
+        "true"
+    );
+
+
+    found++;
+
+
+    localStorage.setItem(
+        "secretFound",
+        found
+    );
+
+
+    document.getElementById(
+        "found"
+    ).textContent = found;
+
+
+    /* ОКНО */
+
+    document.getElementById(
+        "popup"
+    ).style.display = "flex";
+
+}
+
+
+/* ЗАКРЫТЬ */
+
+function closePopup(){
+
+    document.getElementById(
+        "popup"
+    ).style.display = "none";
+
+}
+
+</script>
+
+</body>
+  </html>
