@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,28 +16,37 @@
 body{
     margin:0;
     min-height:100vh;
+
     background:
         radial-gradient(circle at 20% 20%,#202936 0,transparent 30%),
         radial-gradient(circle at 80% 80%,#171d26 0,transparent 35%),
         #080b10;
+
     color:#e8edf3;
+
     font-family:Arial,sans-serif;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     overflow:hidden;
-    transition:.3s;
+
+    transition:
+        background .35s,
+        color .35s;
 }
 
-body.light{
-    background:#e8edf2;
-    color:#17202a;
-}
+
+/* APP */
 
 .app{
     width:min(92%,720px);
     position:relative;
 }
+
+
+/* TOP */
 
 .top{
     display:flex;
@@ -55,71 +65,162 @@ body.light{
     font-size:10px;
     letter-spacing:2px;
     color:#687482;
+
+    transition:.3s;
 }
 
 .status::before{
     content:"";
+
     display:inline-block;
+
     width:6px;
     height:6px;
+
     border-radius:50%;
+
     background:#79ffa8;
-    box-shadow:0 0 12px #79ffa8;
+
+    box-shadow:
+        0 0 12px #79ffa8;
+
     margin-right:7px;
 }
 
+
+/* MAIN PANEL */
+
 .panel{
     position:relative;
+
     padding:45px 35px;
-    border:1px solid rgba(255,255,255,.08);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
     border-radius:28px;
-    background:rgba(255,255,255,.035);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
+
+    background:
+        rgba(255,255,255,.035);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.07),
-        0 25px 70px rgba(0,0,0,.55);
+        inset 0 1px 0
+        rgba(255,255,255,.07),
+
+        0 25px 70px
+        rgba(0,0,0,.55);
+
+    transition:.35s;
 }
 
+.panel::before{
+    content:"";
+
+    position:absolute;
+
+    width:160px;
+    height:160px;
+
+    top:-80px;
+    right:-80px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    filter:blur(50px);
+
+    pointer-events:none;
+}
+
+
+/* TITLE */
+
 .title{
-    font-size:clamp(38px,10vw,76px);
+    font-size:
+        clamp(38px,10vw,76px);
+
     letter-spacing:12px;
+
     margin:0;
+
     font-weight:800;
-    text-shadow:0 5px 25px rgba(0,0,0,.8);
+
+    text-shadow:
+        0 5px 25px
+        rgba(0,0,0,.8);
+
+    transition:.3s;
 }
 
 .subtitle{
     margin-top:12px;
+
     color:#7f8a96;
+
+    transition:.3s;
 }
+
+
+/* MODULES */
 
 .modules{
     margin-top:40px;
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:12px;
 }
 
 .module{
     min-height:100px;
+
     padding:18px;
+
     border-radius:18px;
-    background:rgba(255,255,255,.025);
-    border:1px solid rgba(255,255,255,.06);
+
+    background:
+        rgba(255,255,255,.025);
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.04),
-        0 10px 25px rgba(0,0,0,.3);
-    transition:.2s;
+        inset 0 1px 0
+        rgba(255,255,255,.04),
+
+        0 10px 25px
+        rgba(0,0,0,.3);
+
+    transition:.25s;
+
     cursor:pointer;
 }
 
 .module:hover{
-    transform:translateY(-3px);
-    background:rgba(255,255,255,.055);
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255,255,255,.055);
+
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        0 15px 35px rgba(0,0,0,.45);
+        inset 0 1px 0
+        rgba(255,255,255,.08),
+
+        0 15px 35px
+        rgba(0,0,0,.45);
 }
 
 .module:active{
@@ -128,222 +229,405 @@ body.light{
 
 .icon{
     font-size:22px;
+
     margin-bottom:14px;
 }
 
 .label{
     font-size:10px;
+
     letter-spacing:2px;
+
     color:#65717d;
+
+    transition:.3s;
 }
 
 .value{
     margin-top:5px;
+
     font-size:18px;
+
+    transition:.3s;
 }
 
+
+/* SEARCH */
+
 .search{
+
     margin-top:15px;
+
     height:64px;
+
     display:flex;
+
     align-items:center;
+
     gap:15px;
+
     padding:0 20px;
+
     border-radius:18px;
-    background:rgba(0,0,0,.22);
-    border:1px solid rgba(255,255,255,.06);
+
+    background:
+        rgba(0,0,0,.22);
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
     box-shadow:
-        inset 0 2px 8px rgba(0,0,0,.35),
-        0 8px 25px rgba(0,0,0,.25);
+        inset 0 2px 8px
+        rgba(0,0,0,.35),
+
+        0 8px 25px
+        rgba(0,0,0,.25);
+
     cursor:pointer;
-    transition:.2s;
+
+    transition:.25s;
 }
 
 .search:hover{
-    transform:translateY(-2px);
-    background:rgba(255,255,255,.035);
-}
 
-.search:active{
-    transform:scale(.98);
+    background:
+        rgba(255,255,255,.035);
+
+    transform:
+        translateY(-2px);
 }
 
 .search-icon{
     font-size:20px;
+
     color:#75808b;
 }
 
 .search-text{
+
     color:#59646f;
+
     font-size:13px;
+
     letter-spacing:1px;
 }
 
+
+/* BOTTOM */
+
 .bottom{
+
     margin-top:15px;
+
     display:flex;
+
     justify-content:space-between;
+
     color:#505b66;
+
     font-size:11px;
+
     letter-spacing:2px;
+
+    transition:.3s;
 }
+
 
 /* SETTINGS BUTTON */
 
 .settings-button{
+
     position:fixed;
+
     top:18px;
     right:18px;
+
     width:46px;
     height:46px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     border-radius:15px;
-    background:linear-gradient(
-        145deg,
-        rgba(255,255,255,.08),
-        rgba(255,255,255,.02)
-    );
-    border:1px solid rgba(255,255,255,.09);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.02)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
     color:#aeb8c2;
+
     font-size:20px;
+
     cursor:pointer;
+
     box-shadow:
-        inset 1px 1px 1px rgba(255,255,255,.06),
-        inset -2px -2px 4px rgba(0,0,0,.45),
-        0 10px 25px rgba(0,0,0,.45);
+        inset 1px 1px 1px
+        rgba(255,255,255,.06),
+
+        inset -2px -2px 4px
+        rgba(0,0,0,.45),
+
+        0 10px 25px
+        rgba(0,0,0,.45);
+
     transition:.2s;
+
     z-index:10;
 }
 
 .settings-button:hover{
-    transform:translateY(-2px) rotate(18deg);
+
+    transform:
+        translateY(-2px)
+        rotate(18deg);
+
     color:white;
 }
 
 .settings-button:active{
-    transform:scale(.92);
+
+    transform:
+        scale(.92);
 }
 
-/* SETTINGS MENU */
+
+/* SETTINGS OVERLAY */
 
 .settings-overlay{
+
     position:fixed;
+
     inset:0;
+
     display:none;
+
     align-items:center;
     justify-content:center;
-    background:rgba(0,0,0,.7);
-    backdrop-filter:blur(14px);
+
+    background:
+        rgba(0,0,0,.7);
+
+    backdrop-filter:
+        blur(14px);
+
     z-index:100;
 }
 
+
+/* SETTINGS PANEL */
+
 .settings-panel{
+
     width:min(92%,470px);
+
     padding:25px;
+
     border-radius:27px;
-    background:linear-gradient(
-        145deg,
-        rgba(28,34,42,.97),
-        rgba(11,15,20,.97)
-    );
-    border:1px solid rgba(255,255,255,.09);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(28,34,42,.98),
+            rgba(11,15,20,.98)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
     box-shadow:
-        inset 1px 1px 1px rgba(255,255,255,.06),
-        0 35px 100px rgba(0,0,0,.75);
-    animation:settingsOpen .3s ease;
+        inset 1px 1px 1px
+        rgba(255,255,255,.06),
+
+        0 35px 100px
+        rgba(0,0,0,.75);
+
+    animation:
+        settingsOpen .3s ease;
+
+    transition:.35s;
 }
 
+
+/* SETTINGS HEADER */
+
 .settings-header{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     margin-bottom:22px;
 }
 
 .settings-title{
+
     font-size:22px;
+
     font-weight:bold;
 }
 
 .settings-subtitle{
+
     margin-top:5px;
+
     color:#697580;
+
     font-size:11px;
 }
 
 .settings-close{
+
     width:38px;
     height:38px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     border-radius:12px;
+
     color:#697580;
+
     font-size:27px;
+
     cursor:pointer;
+
     transition:.2s;
 }
 
 .settings-close:hover{
+
     color:white;
-    background:rgba(255,255,255,.06);
-    transform:rotate(90deg);
+
+    background:
+        rgba(255,255,255,.06);
+
+    transform:
+        rotate(90deg);
 }
 
+
+/* SETTING CARD */
+
 .setting-card{
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     gap:15px;
+
     padding:16px;
+
     margin-top:12px;
+
     border-radius:18px;
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,255,255,.055);
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.055);
+
     box-shadow:
-        inset 1px 1px 1px rgba(255,255,255,.04),
-        0 8px 20px rgba(0,0,0,.3);
+        inset 1px 1px 1px
+        rgba(255,255,255,.04),
+
+        0 8px 20px
+        rgba(0,0,0,.3);
+
+    transition:.3s;
 }
 
 .setting-info{
+
     display:flex;
+
     align-items:center;
+
     gap:13px;
 }
 
 .setting-icon{
+
     width:38px;
     height:38px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     border-radius:12px;
-    background:rgba(255,255,255,.045);
+
+    background:
+        rgba(255,255,255,.045);
+
+    transition:.3s;
 }
 
 .setting-name{
+
     font-size:14px;
 }
 
 .setting-desc{
+
     margin-top:4px;
+
     color:#65717c;
+
     font-size:10px;
 }
 
+
+/* SELECT */
+
 .setting-card select{
+
     background:#11161c;
+
     color:#e8edf3;
-    border:1px solid rgba(255,255,255,.09);
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
     border-radius:11px;
+
     padding:9px;
+
     outline:none;
+
+    cursor:pointer;
+
+    transition:.3s;
 }
 
+
+/* SWITCH */
+
 .switch{
+
     position:relative;
+
     width:44px;
     height:24px;
 }
@@ -353,162 +637,528 @@ body.light{
 }
 
 .slider{
+
     position:absolute;
+
     inset:0;
+
     border-radius:20px;
+
     background:#252c34;
+
     cursor:pointer;
+
+    transition:.25s;
 }
 
 .slider::before{
+
     content:"";
+
     position:absolute;
+
     width:18px;
     height:18px;
+
     left:3px;
     top:3px;
+
     border-radius:50%;
+
     background:#89939d;
+
     transition:.25s;
 }
 
 .switch input:checked + .slider{
+
     background:#294b3a;
 }
 
 .switch input:checked + .slider::before{
-    transform:translateX(20px);
+
+    transform:
+        translateX(20px);
+
     background:#79ffa8;
-    box-shadow:0 0 12px rgba(121,255,168,.45);
+
+    box-shadow:
+        0 0 12px
+        rgba(121,255,168,.45);
 }
 
+
+/* SETTINGS FOOTER */
+
 .settings-footer{
+
     margin-top:20px;
+
     text-align:center;
+
     color:#414b55;
+
     font-size:9px;
+
     letter-spacing:3px;
 }
 
-/* SECRET */
+
+/* SECRET OBJECT */
 
 .secret{
+
     position:fixed;
+
     width:12px;
     height:12px;
+
     bottom:17px;
     right:18px;
+
     border-radius:50%;
-    background:rgba(255,255,255,.015);
+
+    background:
+        rgba(255,255,255,.015);
+
     cursor:pointer;
+
+    transition:.2s;
 }
+
+.secret:hover{
+
+    background:
+        rgba(255,255,255,.15);
+
+    box-shadow:
+        0 0 15px
+        rgba(255,255,255,.08);
+}
+
 
 /* POPUP */
 
 .popup{
+
     position:fixed;
+
     inset:0;
+
     display:none;
+
     justify-content:center;
     align-items:center;
-    background:rgba(0,0,0,.72);
-    backdrop-filter:blur(12px);
+
+    background:
+        rgba(0,0,0,.72);
+
+    backdrop-filter:
+        blur(12px);
+
     z-index:110;
 }
 
 .popup-box{
+
     width:min(85%,400px);
+
     padding:35px;
+
     border-radius:26px;
-    background:rgba(18,22,28,.94);
-    border:1px solid rgba(121,255,168,.35);
+
+    background:
+        rgba(18,22,28,.96);
+
+    border:
+        1px solid
+        rgba(121,255,168,.35);
+
     box-shadow:
-        0 0 50px rgba(121,255,168,.12),
-        0 30px 90px rgba(0,0,0,.8);
+        0 0 50px
+        rgba(121,255,168,.12),
+
+        0 30px 90px
+        rgba(0,0,0,.8);
+
     text-align:center;
-    animation:secretAppear .6s ease;
+
+    animation:
+        secretAppear .5s ease;
 }
 
 .popup-box h2{
+
+    margin-top:0;
+
     color:#79ffa8;
+
     letter-spacing:3px;
 }
 
 .popup-box p{
+
     color:#8b96a1;
+
+    line-height:1.5;
 }
 
 .close{
+
     margin-top:15px;
+
     padding:10px 18px;
-    border:1px solid rgba(121,255,168,.2);
+
+    border:
+        1px solid
+        rgba(121,255,168,.2);
+
     border-radius:12px;
-    background:rgba(121,255,168,.05);
+
+    background:
+        rgba(121,255,168,.05);
+
     color:white;
+
     cursor:pointer;
 }
+
 
 /* FLASH */
 
 #flash{
+
     position:fixed;
+
     inset:0;
+
     background:#79ffa8;
+
     opacity:0;
+
     pointer-events:none;
+
     z-index:200;
 }
 
 .flash{
-    animation:flash .45s ease;
+
+    animation:
+        flash .45s ease;
 }
 
+
+/* ANIMATIONS */
+
 @keyframes settingsOpen{
+
     from{
+
         opacity:0;
-        transform:scale(.9) translateY(20px);
+
+        transform:
+            scale(.9)
+            translateY(20px);
     }
+
     to{
+
         opacity:1;
-        transform:scale(1) translateY(0);
+
+        transform:
+            scale(1)
+            translateY(0);
     }
 }
 
 @keyframes secretAppear{
+
     from{
+
         opacity:0;
-        transform:scale(.6);
+
+        transform:
+            scale(.6)
+            translateY(20px);
     }
+
     to{
+
         opacity:1;
-        transform:scale(1);
+
+        transform:
+            scale(1)
+            translateY(0);
     }
 }
 
 @keyframes flash{
-    0%{opacity:0}
-    20%{opacity:.18}
-    100%{opacity:0}
+
+    0%{
+        opacity:0;
+    }
+
+    20%{
+        opacity:.18;
+    }
+
+    100%{
+        opacity:0;
+    }
 }
+
+
+/* LIGHT THEME */
+
+body.light{
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #ffffff 0,
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            #dce3ea 0,
+            transparent 40%
+        ),
+
+        #eef2f5;
+
+    color:#17202a;
+}
+
+body.light .status{
+
+    color:#66727d;
+}
+
+body.light .panel{
+
+    background:
+        rgba(255,255,255,.68);
+
+    border:
+        1px solid
+        rgba(0,0,0,.09);
+
+    box-shadow:
+
+        inset 0 1px 0
+        rgba(255,255,255,.9),
+
+        0 25px 70px
+        rgba(50,60,70,.18);
+}
+
+body.light .title{
+
+    color:#18212b;
+
+    text-shadow:
+        0 5px 20px
+        rgba(0,0,0,.12);
+}
+
+body.light .subtitle{
+
+    color:#66727d;
+}
+
+body.light .module{
+
+    background:
+        rgba(255,255,255,.7);
+
+    border-color:
+        rgba(0,0,0,.08);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.9),
+
+        0 10px 25px
+        rgba(50,60,70,.12);
+}
+
+body.light .module:hover{
+
+    background:
+        rgba(255,255,255,.95);
+
+    box-shadow:
+        0 15px 35px
+        rgba(50,60,70,.16);
+}
+
+body.light .label{
+
+    color:#66727d;
+}
+
+body.light .value{
+
+    color:#17202a;
+}
+
+body.light .search{
+
+    background:
+        rgba(255,255,255,.65);
+
+    border-color:
+        rgba(0,0,0,.08);
+
+    box-shadow:
+        inset 0 2px 8px
+        rgba(0,0,0,.08),
+
+        0 8px 25px
+        rgba(50,60,70,.1);
+}
+
+body.light .search-text{
+
+    color:#65717d;
+}
+
+body.light .bottom{
+
+    color:#66727d;
+}
+
+body.light .settings-button{
+
+    background:
+        rgba(255,255,255,.8);
+
+    color:#46515c;
+
+    border-color:
+        rgba(0,0,0,.1);
+
+    box-shadow:
+        0 8px 25px
+        rgba(50,60,70,.15);
+}
+
+body.light .settings-panel{
+
+    background:
+        rgba(248,250,252,.98);
+
+    color:#17202a;
+
+    border-color:
+        rgba(0,0,0,.1);
+
+    box-shadow:
+        0 35px 100px
+        rgba(50,60,70,.25);
+}
+
+body.light .settings-subtitle{
+
+    color:#68737d;
+}
+
+body.light .settings-close{
+
+    color:#68737d;
+}
+
+body.light .setting-card{
+
+    background:
+        rgba(0,0,0,.035);
+
+    border-color:
+        rgba(0,0,0,.08);
+
+    box-shadow:
+        0 8px 20px
+        rgba(50,60,70,.08);
+}
+
+body.light .setting-icon{
+
+    background:
+        rgba(0,0,0,.045);
+}
+
+body.light .setting-desc{
+
+    color:#68737d;
+}
+
+body.light .setting-card select{
+
+    background:#ffffff;
+
+    color:#17202a;
+
+    border-color:
+        rgba(0,0,0,.12);
+}
+
+body.light .settings-footer{
+
+    color:#89939d;
+}
+
+body.light .popup-box{
+
+    background:
+        rgba(248,250,252,.98);
+
+    border-color:
+        rgba(40,170,100,.35);
+
+    box-shadow:
+        0 30px 90px
+        rgba(50,60,70,.3);
+}
+
+body.light .popup-box p{
+
+    color:#68737d;
+}
+
+
+/* MOBILE */
 
 @media(max-width:600px){
 
     .panel{
-        padding:30px 20px;
+
+        padding:
+            30px 20px;
     }
 
     .title{
+
         letter-spacing:7px;
     }
 
     .modules{
-        grid-template-columns:1fr;
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .module{
+
+        min-height:75px;
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
@@ -516,61 +1166,157 @@ body.light{
 
     <div class="top">
 
-        <div class="logo">S.H</div>
+        <div class="logo">
+            S.H
+        </div>
 
-        <div class="status">
-            SYSTEM ONLINE
+        <div
+            class="status"
+            id="systemStatus">
+
+            СИСТЕМА ОНЛАЙН
+
         </div>
 
     </div>
 
+
     <main class="panel">
 
         <h1 class="title">
+
             SECRET
             <br>
             HUNT
+
         </h1>
 
-        <div class="subtitle" id="subtitle">
+
+        <div
+            class="subtitle"
+            id="subtitle">
+
             Не ищи очевидное.
+
         </div>
+
 
         <div class="modules">
 
-            <div class="module">
-                <div class="icon">◉</div>
-                <div class="label">FOUND</div>
-                <div class="value" id="found">0</div>
+
+            <div
+                class="module"
+                onclick="moduleMessage('found')">
+
+                <div class="icon">
+                    ◉
+                </div>
+
+                <div
+                    class="label"
+                    id="foundLabel">
+
+                    НАЙДЕНО
+
+                </div>
+
+                <div
+                    class="value"
+                    id="found">
+
+                    0
+
+                </div>
+
             </div>
 
-            <div class="module">
-                <div class="icon">◇</div>
-                <div class="label">UNKNOWN</div>
-                <div class="value">???</div>
+
+            <div
+                class="module"
+                onclick="moduleMessage('unknown')">
+
+                <div class="icon">
+                    ◇
+                </div>
+
+                <div
+                    class="label"
+                    id="unknownLabel">
+
+                    НЕИЗВЕСТНО
+
+                </div>
+
+                <div
+                    class="value"
+                    id="unknownValue">
+
+                    ???
+
+                </div>
+
             </div>
 
-            <div class="module">
-                <div class="icon">▣</div>
-                <div class="label">STATUS</div>
-                <div class="value">SEARCH</div>
+
+            <div
+                class="module"
+                onclick="moduleMessage('status')">
+
+                <div class="icon">
+                    ▣
+                </div>
+
+                <div
+                    class="label"
+                    id="statusLabel">
+
+                    СТАТУС
+
+                </div>
+
+                <div
+                    class="value"
+                    id="statusValue">
+
+                    ПОИСК
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div
+            class="search"
+            onclick="search()">
+
+            <div class="search-icon">
+                ⌕
+            </div>
+
+            <div
+                class="search-text"
+                id="searchText">
+
+                ИСКАТЬ ЧТО-НИБУДЬ...
+
             </div>
 
         </div>
 
-        <div class="search" onclick="search()">
-
-            <div class="search-icon">⌕</div>
-
-            <div class="search-text">
-                SEARCH FOR SOMETHING...
-            </div>
-
-        </div>
 
         <div class="bottom">
-            <span>SECRET HUNT</span>
-            <span>v0.1</span>
+
+            <span>
+                SECRET HUNT
+            </span>
+
+            <span>
+                v0.1
+            </span>
+
         </div>
 
     </main>
@@ -578,7 +1324,7 @@ body.light{
 </div>
 
 
-<!-- SETTINGS -->
+<!-- SETTINGS BUTTON -->
 
 <div
     class="settings-button"
@@ -589,11 +1335,14 @@ body.light{
 </div>
 
 
+<!-- SETTINGS -->
+
 <div
     class="settings-overlay"
     id="settingsOverlay">
 
     <div class="settings-panel">
+
 
         <div class="settings-header">
 
@@ -602,16 +1351,21 @@ body.light{
                 <div
                     class="settings-title"
                     id="settingsTitle">
+
                     Настройки
+
                 </div>
 
                 <div
                     class="settings-subtitle"
                     id="settingsSubtitle">
+
                     Настрой Secret Hunt
+
                 </div>
 
             </div>
+
 
             <div
                 class="settings-close"
@@ -623,6 +1377,8 @@ body.light{
 
         </div>
 
+
+        <!-- LANGUAGE -->
 
         <div class="setting-card">
 
@@ -637,18 +1393,23 @@ body.light{
                     <div
                         class="setting-name"
                         id="languageName">
+
                         Язык
+
                     </div>
 
                     <div
                         class="setting-desc"
                         id="languageDesc">
-                        Выберите язык
+
+                        Выберите язык сайта
+
                     </div>
 
                 </div>
 
             </div>
+
 
             <select
                 id="languageSelect"
@@ -671,6 +1432,8 @@ body.light{
         </div>
 
 
+        <!-- SOUND -->
+
         <div class="setting-card">
 
             <div class="setting-info">
@@ -684,18 +1447,23 @@ body.light{
                     <div
                         class="setting-name"
                         id="soundName">
+
                         Звук
+
                     </div>
 
                     <div
                         class="setting-desc"
                         id="soundDesc">
+
                         Звуки интерфейса
+
                     </div>
 
                 </div>
 
             </div>
+
 
             <label class="switch">
 
@@ -711,6 +1479,8 @@ body.light{
         </div>
 
 
+        <!-- THEME -->
+
         <div class="setting-card">
 
             <div class="setting-info">
@@ -724,33 +1494,55 @@ body.light{
                     <div
                         class="setting-name"
                         id="themeName">
+
                         Тема
+
                     </div>
 
                     <div
                         class="setting-desc"
                         id="themeDesc">
+
                         Внешний вид сайта
+
                     </div>
 
                 </div>
 
             </div>
 
+
             <select
                 id="themeSelect"
                 onchange="changeTheme(this.value)">
 
-                <option value="dark">Dark</option>
-                <option value="light">Light</option>
+                <option
+                    value="dark"
+                    id="darkOption">
+
+                    Тёмная
+
+                </option>
+
+                <option
+                    value="light"
+                    id="lightOption">
+
+                    Светлая
+
+                </option>
 
             </select>
 
         </div>
 
 
-        <div class="settings-footer">
+        <div
+            class="settings-footer"
+            id="settingsFooter">
+
             SECRET HUNT • v0.1
+
         </div>
 
     </div>
@@ -762,267 +1554,4 @@ body.light{
 
 <div
     class="secret"
-    onclick="secretFound()">
-</div>
-
-
-<!-- FOUND -->
-
-<div
-    class="popup"
-    id="popup">
-
-    <div class="popup-box">
-
-        <h2>◈ SECRET FOUND</h2>
-
-        <p>
-            Ты нашёл секрет.
-        </p>
-
-        <button
-            class="close"
-            onclick="closePopup()">
-            Продолжить
-        </button>
-
-    </div>
-
-</div>
-
-
-<div id="flash"></div>
-
-
-<script>
-
-let found =
-    Number(localStorage.getItem("secretFound")) || 0;
-
-document.getElementById("found").textContent = found;
-
-
-/* SEARCH */
-
-function search(){
-
-    alert("Поиск начался...");
-}
-
-
-/* SETTINGS */
-
-function openSettings(){
-
-    document.getElementById(
-        "settingsOverlay"
-    ).style.display = "flex";
-
-}
-
-function closeSettings(){
-
-    document.getElementById(
-        "settingsOverlay"
-    ).style.display = "none";
-
-}
-
-
-/* LANGUAGES */
-
-const languages = {
-
-    ru:{
-        title:"Настройки",
-        subtitle:"Настрой Secret Hunt",
-        language:"Язык",
-        languageDesc:"Выберите язык",
-        sound:"Звук",
-        soundDesc:"Звуки интерфейса",
-        theme:"Тема",
-        themeDesc:"Внешний вид сайта",
-        site:"Не ищи очевидное.",
-        search:"SEARCH FOR SOMETHING..."
-    },
-
-    en:{
-        title:"Settings",
-        subtitle:"Customize Secret Hunt",
-        language:"Language",
-        languageDesc:"Choose language",
-        sound:"Sound",
-        soundDesc:"Interface sounds",
-        theme:"Theme",
-        themeDesc:"Website appearance",
-        site:"Don't look for the obvious.",
-        search:"SEARCH FOR SOMETHING..."
-    },
-
-    uk:{
-        title:"Налаштування",
-        subtitle:"Налаштуй Secret Hunt",
-        language:"Мова",
-        languageDesc:"Оберіть мову",
-        sound:"Звук",
-        soundDesc:"Звуки інтерфейсу",
-        theme:"Тема",
-        themeDesc:"Вигляд сайту",
-        site:"Не шукай очевидне.",
-        search:"SEARCH FOR SOMETHING..."
-    }
-
-};
-
-
-function changeLanguage(lang){
-
-    localStorage.setItem(
-        "secretLanguage",
-        lang
-    );
-
-    applyLanguage(lang);
-
-}
-
-
-function applyLanguage(lang){
-
-    const t = languages[lang];
-
-    document.getElementById(
-        "settingsTitle"
-    ).textContent = t.title;
-
-    document.getElementById(
-        "settingsSubtitle"
-    ).textContent = t.subtitle;
-
-    document.getElementById(
-        "languageName"
-    ).textContent = t.language;
-
-    document.getElementById(
-        "languageDesc"
-    ).textContent = t.languageDesc;
-
-    document.getElementById(
-        "soundName"
-    ).textContent = t.sound;
-
-    document.getElementById(
-        "soundDesc"
-    ).textContent = t.soundDesc;
-
-    document.getElementById(
-        "themeName"
-    ).textContent = t.theme;
-
-    document.getElementById(
-        "themeDesc"
-    ).textContent = t.themeDesc;
-
-    document.getElementById(
-        "subtitle"
-    ).textContent = t.site;
-
-    document.querySelector(
-        ".search-text"
-    ).textContent = t.search;
-
-}
-
-
-/* THEME */
-
-function changeTheme(theme){
-
-    if(theme === "light"){
-        document.body.classList.add("light");
-    }else{
-        document.body.classList.remove("light");
-    }
-
-    localStorage.setItem(
-        "secretTheme",
-        theme
-    );
-
-}
-
-
-/* SECRET */
-
-function secretFound(){
-
-    if(
-        localStorage.getItem("secret1")
-    ){
-        return;
-    }
-
-    const flash =
-        document.getElementById("flash");
-
-    flash.classList.remove("flash");
-
-    void flash.offsetWidth;
-
-    flash.classList.add("flash");
-
-    localStorage.setItem(
-        "secret1",
-        "true"
-    );
-
-    found++;
-
-    localStorage.setItem(
-        "secretFound",
-        found
-    );
-
-    document.getElementById(
-        "found"
-    ).textContent = found;
-
-    document.getElementById(
-        "popup"
-    ).style.display = "flex";
-
-}
-
-
-function closePopup(){
-
-    document.getElementById(
-        "popup"
-    ).style.display = "none";
-
-}
-
-
-/* LOAD */
-
-const savedLanguage =
-    localStorage.getItem("secretLanguage") || "ru";
-
-const savedTheme =
-    localStorage.getItem("secretTheme") || "dark";
-
-document.getElementById(
-    "languageSelect"
-).value = savedLanguage;
-
-document.getElementById(
-    "themeSelect"
-).value = savedTheme;
-
-applyLanguage(savedLanguage);
-changeTheme(savedTheme);
-
-</script>
-
-</body>
-    </html>
+    onclick=
