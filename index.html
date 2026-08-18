@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,37 +15,28 @@
 body{
     margin:0;
     min-height:100vh;
-
     background:
         radial-gradient(circle at 20% 20%,#202936 0,transparent 30%),
         radial-gradient(circle at 80% 80%,#171d26 0,transparent 35%),
         #080b10;
-
     color:#e8edf3;
-
     font-family:Arial,sans-serif;
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     overflow:hidden;
-
-    transition:
-        background .35s,
-        color .35s;
+    transition:.35s;
 }
 
-
-/* APP */
+button,
+select{
+    font:inherit;
+}
 
 .app{
     width:min(92%,720px);
     position:relative;
 }
-
-
-/* TOP */
 
 .top{
     display:flex;
@@ -65,569 +55,287 @@ body{
     font-size:10px;
     letter-spacing:2px;
     color:#687482;
-
-    transition:.3s;
 }
 
 .status::before{
     content:"";
-
     display:inline-block;
-
     width:6px;
     height:6px;
-
     border-radius:50%;
-
     background:#79ffa8;
-
-    box-shadow:
-        0 0 12px #79ffa8;
-
+    box-shadow:0 0 12px #79ffa8;
     margin-right:7px;
 }
 
-
-/* MAIN PANEL */
-
 .panel{
     position:relative;
-
     padding:45px 35px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
+    border:1px solid rgba(255,255,255,.08);
     border-radius:28px;
-
-    background:
-        rgba(255,255,255,.035);
-
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
-
+    background:rgba(255,255,255,.035);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
     box-shadow:
-        inset 0 1px 0
-        rgba(255,255,255,.07),
-
-        0 25px 70px
-        rgba(0,0,0,.55);
-
-    transition:.35s;
+        inset 0 1px 0 rgba(255,255,255,.07),
+        0 25px 70px rgba(0,0,0,.55);
 }
-
-.panel::before{
-    content:"";
-
-    position:absolute;
-
-    width:160px;
-    height:160px;
-
-    top:-80px;
-    right:-80px;
-
-    background:
-        rgba(255,255,255,.06);
-
-    filter:blur(50px);
-
-    pointer-events:none;
-}
-
-
-/* TITLE */
 
 .title{
-    font-size:
-        clamp(38px,10vw,76px);
-
+    font-size:clamp(38px,10vw,76px);
     letter-spacing:12px;
-
     margin:0;
-
     font-weight:800;
-
-    text-shadow:
-        0 5px 25px
-        rgba(0,0,0,.8);
-
-    transition:.3s;
+    text-shadow:0 5px 25px rgba(0,0,0,.8);
 }
 
 .subtitle{
     margin-top:12px;
-
     color:#7f8a96;
-
-    transition:.3s;
 }
-
-
-/* MODULES */
 
 .modules{
     margin-top:40px;
-
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:12px;
 }
 
 .module{
     min-height:100px;
-
     padding:18px;
-
     border-radius:18px;
-
-    background:
-        rgba(255,255,255,.025);
-
-    border:
-        1px solid
-        rgba(255,255,255,.06);
-
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(255,255,255,.06);
     box-shadow:
-        inset 0 1px 0
-        rgba(255,255,255,.04),
-
-        0 10px 25px
-        rgba(0,0,0,.3);
-
+        inset 0 1px 0 rgba(255,255,255,.04),
+        0 10px 25px rgba(0,0,0,.3);
     transition:.25s;
-
     cursor:pointer;
 }
 
 .module:hover{
-
-    transform:
-        translateY(-3px);
-
-    background:
-        rgba(255,255,255,.055);
-
-    box-shadow:
-        inset 0 1px 0
-        rgba(255,255,255,.08),
-
-        0 15px 35px
-        rgba(0,0,0,.45);
-}
-
-.module:active{
-    transform:scale(.97);
+    transform:translateY(-3px);
+    background:rgba(255,255,255,.055);
 }
 
 .icon{
     font-size:22px;
-
     margin-bottom:14px;
 }
 
 .label{
     font-size:10px;
-
     letter-spacing:2px;
-
     color:#65717d;
-
-    transition:.3s;
 }
 
 .value{
     margin-top:5px;
-
     font-size:18px;
-
-    transition:.3s;
 }
 
-
-/* SEARCH */
-
 .search{
-
     margin-top:15px;
-
     height:64px;
-
     display:flex;
-
     align-items:center;
-
     gap:15px;
-
     padding:0 20px;
-
     border-radius:18px;
-
-    background:
-        rgba(0,0,0,.22);
-
-    border:
-        1px solid
-        rgba(255,255,255,.06);
-
+    background:rgba(0,0,0,.22);
+    border:1px solid rgba(255,255,255,.06);
     box-shadow:
-        inset 0 2px 8px
-        rgba(0,0,0,.35),
-
-        0 8px 25px
-        rgba(0,0,0,.25);
-
+        inset 0 2px 8px rgba(0,0,0,.35),
+        0 8px 25px rgba(0,0,0,.25);
     cursor:pointer;
-
     transition:.25s;
 }
 
 .search:hover{
-
-    background:
-        rgba(255,255,255,.035);
-
-    transform:
-        translateY(-2px);
+    background:rgba(255,255,255,.035);
+    transform:translateY(-2px);
 }
 
 .search-icon{
     font-size:20px;
-
     color:#75808b;
 }
 
 .search-text{
-
     color:#59646f;
-
     font-size:13px;
-
     letter-spacing:1px;
 }
 
-
-/* BOTTOM */
-
 .bottom{
-
     margin-top:15px;
-
     display:flex;
-
     justify-content:space-between;
-
     color:#505b66;
-
     font-size:11px;
-
     letter-spacing:2px;
-
-    transition:.3s;
 }
 
 
-/* SETTINGS BUTTON */
+/* =========================
+   НАСТРОЙКИ
+========================= */
 
 .settings-button{
-
     position:fixed;
-
     top:18px;
     right:18px;
-
     width:46px;
     height:46px;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     border-radius:15px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.08),
-            rgba(255,255,255,.02)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.02)
+    );
+    border:1px solid rgba(255,255,255,.09);
     color:#aeb8c2;
-
     font-size:20px;
-
     cursor:pointer;
-
     box-shadow:
-        inset 1px 1px 1px
-        rgba(255,255,255,.06),
-
-        inset -2px -2px 4px
-        rgba(0,0,0,.45),
-
-        0 10px 25px
-        rgba(0,0,0,.45);
-
+        inset 1px 1px 1px rgba(255,255,255,.06),
+        inset -2px -2px 4px rgba(0,0,0,.45),
+        0 10px 25px rgba(0,0,0,.45);
     transition:.2s;
-
     z-index:10;
 }
 
 .settings-button:hover{
-
-    transform:
-        translateY(-2px)
-        rotate(18deg);
-
+    transform:translateY(-2px) rotate(18deg);
     color:white;
 }
 
-.settings-button:active{
-
-    transform:
-        scale(.92);
-}
-
-
-/* SETTINGS OVERLAY */
-
-.settings-overlay{
-
+.settings-overlay,
+.hints-overlay{
     position:fixed;
-
     inset:0;
-
     display:none;
-
     align-items:center;
     justify-content:center;
-
-    background:
-        rgba(0,0,0,.7);
-
-    backdrop-filter:
-        blur(14px);
-
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(14px);
     z-index:100;
 }
 
-
-/* SETTINGS PANEL */
-
-.settings-panel{
-
+.settings-panel,
+.hints-panel{
     width:min(92%,470px);
-
     padding:25px;
-
     border-radius:27px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(28,34,42,.98),
-            rgba(11,15,20,.98)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
+    background:linear-gradient(
+        145deg,
+        rgba(28,34,42,.98),
+        rgba(11,15,20,.98)
+    );
+    border:1px solid rgba(255,255,255,.09);
     box-shadow:
-        inset 1px 1px 1px
-        rgba(255,255,255,.06),
-
-        0 35px 100px
-        rgba(0,0,0,.75);
-
-    animation:
-        settingsOpen .3s ease;
-
-    transition:.35s;
+        inset 1px 1px 1px rgba(255,255,255,.06),
+        0 35px 100px rgba(0,0,0,.75);
+    animation:openPanel .3s ease;
 }
 
-
-/* SETTINGS HEADER */
-
-.settings-header{
-
+.settings-header,
+.hints-header{
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     margin-bottom:22px;
 }
 
-.settings-title{
-
+.settings-title,
+.hints-title{
     font-size:22px;
-
     font-weight:bold;
 }
 
 .settings-subtitle{
-
     margin-top:5px;
-
     color:#697580;
-
     font-size:11px;
 }
 
-.settings-close{
-
+.settings-close,
+.hints-close{
     width:38px;
     height:38px;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     border-radius:12px;
-
     color:#697580;
-
     font-size:27px;
-
     cursor:pointer;
-
     transition:.2s;
 }
 
-.settings-close:hover{
-
+.settings-close:hover,
+.hints-close:hover{
     color:white;
-
-    background:
-        rgba(255,255,255,.06);
-
-    transform:
-        rotate(90deg);
+    background:rgba(255,255,255,.06);
+    transform:rotate(90deg);
 }
 
-
-/* SETTING CARD */
-
 .setting-card{
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     gap:15px;
-
     padding:16px;
-
     margin-top:12px;
-
     border-radius:18px;
-
-    background:
-        rgba(255,255,255,.035);
-
-    border:
-        1px solid
-        rgba(255,255,255,.055);
-
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.055);
     box-shadow:
-        inset 1px 1px 1px
-        rgba(255,255,255,.04),
-
-        0 8px 20px
-        rgba(0,0,0,.3);
-
-    transition:.3s;
+        inset 1px 1px 1px rgba(255,255,255,.04),
+        0 8px 20px rgba(0,0,0,.3);
 }
 
 .setting-info{
-
     display:flex;
-
     align-items:center;
-
     gap:13px;
 }
 
 .setting-icon{
-
     width:38px;
     height:38px;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     border-radius:12px;
-
-    background:
-        rgba(255,255,255,.045);
-
-    transition:.3s;
+    background:rgba(255,255,255,.045);
 }
 
 .setting-name{
-
     font-size:14px;
 }
 
 .setting-desc{
-
     margin-top:4px;
-
     color:#65717c;
-
     font-size:10px;
 }
 
-
-/* SELECT */
-
 .setting-card select{
-
     background:#11161c;
-
     color:#e8edf3;
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
+    border:1px solid rgba(255,255,255,.09);
     border-radius:11px;
-
     padding:9px;
-
     outline:none;
-
-    cursor:pointer;
-
-    transition:.3s;
 }
 
-
-/* SWITCH */
-
 .switch{
-
     position:relative;
-
     width:44px;
     height:24px;
 }
@@ -637,530 +345,443 @@ body{
 }
 
 .slider{
-
     position:absolute;
-
     inset:0;
-
     border-radius:20px;
-
     background:#252c34;
-
     cursor:pointer;
-
     transition:.25s;
 }
 
 .slider::before{
-
     content:"";
-
     position:absolute;
-
     width:18px;
     height:18px;
-
     left:3px;
     top:3px;
-
     border-radius:50%;
-
     background:#89939d;
-
     transition:.25s;
 }
 
 .switch input:checked + .slider{
-
     background:#294b3a;
 }
 
 .switch input:checked + .slider::before{
-
-    transform:
-        translateX(20px);
-
+    transform:translateX(20px);
     background:#79ffa8;
-
-    box-shadow:
-        0 0 12px
-        rgba(121,255,168,.45);
+    box-shadow:0 0 12px rgba(121,255,168,.45);
 }
 
 
-/* SETTINGS FOOTER */
+/* =========================
+   ПОДСКАЗКИ
+========================= */
 
-.settings-footer{
-
-    margin-top:20px;
-
-    text-align:center;
-
-    color:#414b55;
-
-    font-size:9px;
-
-    letter-spacing:3px;
-}
-
-
-/* SECRET OBJECT */
-
-.secret{
-
-    position:fixed;
-
-    width:12px;
-    height:12px;
-
-    bottom:17px;
-    right:18px;
-
-    border-radius:50%;
-
+.hints-button{
+    width:100%;
+    margin-top:12px;
+    padding:16px;
+    border-radius:18px;
+    border:1px solid rgba(121,255,168,.15);
     background:
-        rgba(255,255,255,.015);
-
+        linear-gradient(
+            145deg,
+            rgba(121,255,168,.08),
+            rgba(255,255,255,.025)
+        );
+    color:#dce5ec;
+    text-align:left;
     cursor:pointer;
-
-    transition:.2s;
-}
-
-.secret:hover{
-
-    background:
-        rgba(255,255,255,.15);
-
     box-shadow:
-        0 0 15px
-        rgba(255,255,255,.08);
+        inset 1px 1px 1px rgba(255,255,255,.05),
+        0 10px 25px rgba(0,0,0,.3);
+    transition:.25s;
+}
+
+.hints-button:hover{
+    transform:translateY(-2px);
+    border-color:rgba(121,255,168,.3);
+}
+
+.hints-button-title{
+    font-size:14px;
+    font-weight:bold;
+}
+
+.hints-button-desc{
+    margin-top:5px;
+    color:#687581;
+    font-size:10px;
+}
+
+.progress-box{
+    padding:20px;
+    border-radius:20px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.06);
+    margin-bottom:15px;
+}
+
+.progress-number{
+    font-size:32px;
+    font-weight:bold;
+}
+
+.progress-label{
+    margin-top:5px;
+    color:#697580;
+    font-size:11px;
+}
+
+.progress-bar{
+    height:8px;
+    margin-top:16px;
+    border-radius:20px;
+    background:rgba(255,255,255,.06);
+    overflow:hidden;
+}
+
+.progress-fill{
+    height:100%;
+    width:0%;
+    border-radius:20px;
+    background:#79ffa8;
+    box-shadow:0 0 12px rgba(121,255,168,.4);
+    transition:.5s;
+}
+
+.remaining{
+    margin-top:12px;
+    color:#84909b;
+    font-size:12px;
+}
+
+.hint-card{
+    padding:18px;
+    border-radius:18px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.hint-label{
+    color:#79ffa8;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.hint-text{
+    margin-top:9px;
+    line-height:1.5;
+    color:#aeb8c2;
+    font-size:13px;
+}
+
+.next-hint{
+    width:100%;
+    margin-top:12px;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.07);
+    background:rgba(255,255,255,.035);
+    color:#aeb8c2;
+    cursor:pointer;
 }
 
 
-/* POPUP */
+/* =========================
+   ПЕРВАЯ СЕКРЕТКА
+========================= */
+
+.first-secret{
+    display:inline-block;
+    position:relative;
+    cursor:pointer;
+    border-radius:12px;
+    padding:3px 7px;
+    margin-left:-7px;
+    background:rgba(121,255,168,.10);
+    border:1px solid rgba(121,255,168,.25);
+    box-shadow:0 0 18px rgba(121,255,168,.10);
+    animation:firstSecretPulse 1.5s infinite;
+}
+
+.first-secret::after{
+    content:"↓";
+    position:absolute;
+    left:50%;
+    top:100%;
+    transform:translateX(-50%);
+    color:#79ffa8;
+    font-size:18px;
+    animation:arrowMove .8s infinite alternate;
+}
+
+
+/* =========================
+   POPUP
+========================= */
 
 .popup{
-
     position:fixed;
-
     inset:0;
-
     display:none;
-
     justify-content:center;
     align-items:center;
-
-    background:
-        rgba(0,0,0,.72);
-
-    backdrop-filter:
-        blur(12px);
-
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(12px);
     z-index:110;
 }
 
 .popup-box{
-
     width:min(85%,400px);
-
     padding:35px;
-
     border-radius:26px;
-
-    background:
-        rgba(18,22,28,.96);
-
-    border:
-        1px solid
-        rgba(121,255,168,.35);
-
+    background:rgba(18,22,28,.96);
+    border:1px solid rgba(121,255,168,.35);
     box-shadow:
-        0 0 50px
-        rgba(121,255,168,.12),
-
-        0 30px 90px
-        rgba(0,0,0,.8);
-
+        0 0 50px rgba(121,255,168,.12),
+        0 30px 90px rgba(0,0,0,.8);
     text-align:center;
-
-    animation:
-        secretAppear .5s ease;
+    animation:secretAppear .5s ease;
 }
 
 .popup-box h2{
-
     margin-top:0;
-
     color:#79ffa8;
-
     letter-spacing:3px;
 }
 
 .popup-box p{
-
     color:#8b96a1;
-
     line-height:1.5;
 }
 
 .close{
-
     margin-top:15px;
-
     padding:10px 18px;
-
-    border:
-        1px solid
-        rgba(121,255,168,.2);
-
+    border:1px solid rgba(121,255,168,.2);
     border-radius:12px;
-
-    background:
-        rgba(121,255,168,.05);
-
+    background:rgba(121,255,168,.05);
     color:white;
-
     cursor:pointer;
 }
 
 
-/* FLASH */
+/* =========================
+   FLASH
+========================= */
 
 #flash{
-
     position:fixed;
-
     inset:0;
-
     background:#79ffa8;
-
     opacity:0;
-
     pointer-events:none;
-
     z-index:200;
 }
 
 .flash{
-
-    animation:
-        flash .45s ease;
+    animation:flash .45s ease;
 }
 
 
-/* ANIMATIONS */
-
-@keyframes settingsOpen{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            scale(.9)
-            translateY(20px);
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-            scale(1)
-            translateY(0);
-    }
-}
-
-@keyframes secretAppear{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            scale(.6)
-            translateY(20px);
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-            scale(1)
-            translateY(0);
-    }
-}
-
-@keyframes flash{
-
-    0%{
-        opacity:0;
-    }
-
-    20%{
-        opacity:.18;
-    }
-
-    100%{
-        opacity:0;
-    }
-}
-
-
-/* LIGHT THEME */
+/* =========================
+   СВЕТЛАЯ ТЕМА
+========================= */
 
 body.light{
-
     background:
-        radial-gradient(
-            circle at 20% 20%,
-            #ffffff 0,
-            transparent 35%
-        ),
-
-        radial-gradient(
-            circle at 80% 80%,
-            #dce3ea 0,
-            transparent 40%
-        ),
-
+        radial-gradient(circle at 20% 20%,#fff 0,transparent 35%),
+        radial-gradient(circle at 80% 80%,#dce3ea 0,transparent 40%),
         #eef2f5;
-
     color:#17202a;
 }
 
-body.light .status{
-
-    color:#66727d;
-}
-
 body.light .panel{
-
-    background:
-        rgba(255,255,255,.68);
-
-    border:
-        1px solid
-        rgba(0,0,0,.09);
-
+    background:rgba(255,255,255,.68);
+    border-color:rgba(0,0,0,.09);
     box-shadow:
-
-        inset 0 1px 0
-        rgba(255,255,255,.9),
-
-        0 25px 70px
-        rgba(50,60,70,.18);
+        inset 0 1px 0 rgba(255,255,255,.9),
+        0 25px 70px rgba(50,60,70,.18);
 }
 
 body.light .title{
-
     color:#18212b;
-
-    text-shadow:
-        0 5px 20px
-        rgba(0,0,0,.12);
+    text-shadow:0 5px 20px rgba(0,0,0,.12);
 }
 
 body.light .subtitle{
-
     color:#66727d;
 }
 
 body.light .module{
-
-    background:
-        rgba(255,255,255,.7);
-
-    border-color:
-        rgba(0,0,0,.08);
-
+    background:rgba(255,255,255,.7);
+    border-color:rgba(0,0,0,.08);
     box-shadow:
-        inset 0 1px 0
-        rgba(255,255,255,.9),
-
-        0 10px 25px
-        rgba(50,60,70,.12);
-}
-
-body.light .module:hover{
-
-    background:
-        rgba(255,255,255,.95);
-
-    box-shadow:
-        0 15px 35px
-        rgba(50,60,70,.16);
+        inset 0 1px 0 rgba(255,255,255,.9),
+        0 10px 25px rgba(50,60,70,.12);
 }
 
 body.light .label{
-
     color:#66727d;
 }
 
-body.light .value{
-
-    color:#17202a;
-}
-
 body.light .search{
-
-    background:
-        rgba(255,255,255,.65);
-
-    border-color:
-        rgba(0,0,0,.08);
-
-    box-shadow:
-        inset 0 2px 8px
-        rgba(0,0,0,.08),
-
-        0 8px 25px
-        rgba(50,60,70,.1);
+    background:rgba(255,255,255,.65);
+    border-color:rgba(0,0,0,.08);
 }
 
 body.light .search-text{
-
     color:#65717d;
 }
 
 body.light .bottom{
-
     color:#66727d;
 }
 
 body.light .settings-button{
-
-    background:
-        rgba(255,255,255,.8);
-
+    background:rgba(255,255,255,.8);
     color:#46515c;
-
-    border-color:
-        rgba(0,0,0,.1);
-
-    box-shadow:
-        0 8px 25px
-        rgba(50,60,70,.15);
+    border-color:rgba(0,0,0,.1);
 }
 
-body.light .settings-panel{
-
-    background:
-        rgba(248,250,252,.98);
-
+body.light .settings-panel,
+body.light .hints-panel{
+    background:rgba(248,250,252,.98);
     color:#17202a;
-
-    border-color:
-        rgba(0,0,0,.1);
-
-    box-shadow:
-        0 35px 100px
-        rgba(50,60,70,.25);
+    border-color:rgba(0,0,0,.1);
 }
 
-body.light .settings-subtitle{
-
-    color:#68737d;
+body.light .setting-card,
+body.light .progress-box,
+body.light .hint-card{
+    background:rgba(0,0,0,.035);
+    border-color:rgba(0,0,0,.08);
 }
 
-body.light .settings-close{
-
-    color:#68737d;
-}
-
-body.light .setting-card{
-
-    background:
-        rgba(0,0,0,.035);
-
-    border-color:
-        rgba(0,0,0,.08);
-
-    box-shadow:
-        0 8px 20px
-        rgba(50,60,70,.08);
-}
-
-body.light .setting-icon{
-
-    background:
-        rgba(0,0,0,.045);
-}
-
-body.light .setting-desc{
-
+body.light .setting-desc,
+body.light .settings-subtitle,
+body.light .progress-label,
+body.light .remaining{
     color:#68737d;
 }
 
 body.light .setting-card select{
-
-    background:#ffffff;
-
+    background:white;
     color:#17202a;
-
-    border-color:
-        rgba(0,0,0,.12);
 }
 
-body.light .settings-footer{
+body.light .hints-button{
+    color:#26313b;
+    background:rgba(255,255,255,.75);
+}
 
-    color:#89939d;
+body.light .hints-button-desc,
+body.light .hint-text{
+    color:#68737d;
+}
+
+body.light .next-hint{
+    color:#46515c;
+    background:rgba(0,0,0,.03);
 }
 
 body.light .popup-box{
-
-    background:
-        rgba(248,250,252,.98);
-
-    border-color:
-        rgba(40,170,100,.35);
-
-    box-shadow:
-        0 30px 90px
-        rgba(50,60,70,.3);
+    background:rgba(248,250,252,.98);
 }
 
 body.light .popup-box p{
-
     color:#68737d;
 }
 
 
-/* MOBILE */
+/* =========================
+   АНИМАЦИИ
+========================= */
+
+@keyframes openPanel{
+    from{
+        opacity:0;
+        transform:scale(.9) translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+@keyframes secretAppear{
+    from{
+        opacity:0;
+        transform:scale(.6) translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+@keyframes flash{
+    0%{opacity:0}
+    20%{opacity:.18}
+    100%{opacity:0}
+}
+
+@keyframes firstSecretPulse{
+    0%,100%{
+        box-shadow:0 0 10px rgba(121,255,168,.08);
+    }
+
+    50%{
+        box-shadow:0 0 25px rgba(121,255,168,.3);
+    }
+}
+
+@keyframes arrowMove{
+    from{
+        transform:translate(-50%,0);
+    }
+
+    to{
+        transform:translate(-50%,6px);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:600px){
 
     .panel{
-
-        padding:
-            30px 20px;
+        padding:30px 20px;
     }
 
     .title{
-
         letter-spacing:7px;
     }
 
     .modules{
-
-        grid-template-columns:
-            1fr;
+        grid-template-columns:1fr;
     }
 
     .module{
-
         min-height:75px;
     }
-
 }
 
 </style>
-
 </head>
 
 
 <body>
+
 
 <div class="app">
 
@@ -1173,9 +794,7 @@ body.light .popup-box p{
         <div
             class="status"
             id="systemStatus">
-
             СИСТЕМА ОНЛАЙН
-
         </div>
 
     </div>
@@ -1186,8 +805,16 @@ body.light .popup-box p{
         <h1 class="title">
 
             SECRET
+
             <br>
-            HUNT
+
+            <span
+                class="first-secret"
+                onclick="secretFound(1)">
+
+                HUNT
+
+            </span>
 
         </h1>
 
@@ -1203,10 +830,7 @@ body.light .popup-box p{
 
         <div class="modules">
 
-
-            <div
-                class="module"
-                onclick="moduleMessage('found')">
+            <div class="module">
 
                 <div class="icon">
                     ◉
@@ -1224,16 +848,14 @@ body.light .popup-box p{
                     class="value"
                     id="found">
 
-                    0
+                    0 / 100
 
                 </div>
 
             </div>
 
 
-            <div
-                class="module"
-                onclick="moduleMessage('unknown')">
+            <div class="module">
 
                 <div class="icon">
                     ◇
@@ -1241,26 +863,24 @@ body.light .popup-box p{
 
                 <div
                     class="label"
-                    id="unknownLabel">
+                    id="remainingLabel">
 
-                    НЕИЗВЕСТНО
+                    ОСТАЛОСЬ
 
                 </div>
 
                 <div
                     class="value"
-                    id="unknownValue">
+                    id="remaining">
 
-                    ???
+                    100
 
                 </div>
 
             </div>
 
 
-            <div
-                class="module"
-                onclick="moduleMessage('status')">
+            <div class="module">
 
                 <div class="icon">
                     ▣
@@ -1284,7 +904,6 @@ body.light .popup-box p{
 
             </div>
 
-
         </div>
 
 
@@ -1307,6 +926,29 @@ body.light .popup-box p{
         </div>
 
 
+        <button
+            class="hints-button"
+            onclick="openHints()">
+
+            <div
+                class="hints-button-title"
+                id="hintsButtonTitle">
+
+                💡 Подсказки
+
+            </div>
+
+            <div
+                class="hints-button-desc"
+                id="hintsButtonDesc">
+
+                Посмотреть прогресс и подсказки секретов
+
+            </div>
+
+        </button>
+
+
         <div class="bottom">
 
             <span>
@@ -1324,25 +966,27 @@ body.light .popup-box p{
 </div>
 
 
-<!-- SETTINGS BUTTON -->
+<!-- КНОПКА НАСТРОЕК -->
 
-<div
+<button
     class="settings-button"
-    onclick="openSettings()">
+    onclick="openSettings()"
+    aria-label="Настройки">
 
     ⚙
 
-</div>
+</button>
 
 
-<!-- SETTINGS -->
+<!-- =========================
+     МЕНЮ НАСТРОЕК
+========================= -->
 
 <div
     class="settings-overlay"
     id="settingsOverlay">
 
     <div class="settings-panel">
-
 
         <div class="settings-header">
 
@@ -1378,7 +1022,7 @@ body.light .popup-box p{
         </div>
 
 
-        <!-- LANGUAGE -->
+        <!-- ЯЗЫК -->
 
         <div class="setting-card">
 
@@ -1432,7 +1076,7 @@ body.light .popup-box p{
         </div>
 
 
-        <!-- SOUND -->
+        <!-- ЗВУК -->
 
         <div class="setting-card">
 
@@ -1479,7 +1123,7 @@ body.light .popup-box p{
         </div>
 
 
-        <!-- THEME -->
+        <!-- ТЕМА -->
 
         <div class="setting-card">
 
@@ -1516,32 +1160,15 @@ body.light .popup-box p{
                 id="themeSelect"
                 onchange="changeTheme(this.value)">
 
-                <option
-                    value="dark"
-                    id="darkOption">
-
+                <option value="dark">
                     Тёмная
+                        </option>
 
-                </option>
-
-                <option
-                    value="light"
-                    id="lightOption">
-
+                <option value="light">
                     Светлая
-
                 </option>
 
             </select>
-
-        </div>
-
-
-        <div
-            class="settings-footer"
-            id="settingsFooter">
-
-            SECRET HUNT • v0.1
 
         </div>
 
@@ -1550,8 +1177,688 @@ body.light .popup-box p{
 </div>
 
 
-<!-- SECRET -->
+<!-- =========================
+     МЕНЮ ПОДСКАЗОК
+========================= -->
 
 <div
-    class="secret"
-    onclick=
+    class="hints-overlay"
+    id="hintsOverlay">
+
+    <div class="hints-panel">
+
+        <div class="hints-header">
+
+            <div>
+                <div
+                    class="hints-title"
+                    id="hintsTitle">
+                    Подсказки
+                </div>
+            </div>
+
+            <div
+                class="hints-close"
+                onclick="closeHints()">
+
+                ×
+
+            </div>
+
+        </div>
+
+
+        <div class="progress-box">
+
+            <div
+                class="progress-number"
+                id="progressNumber">
+
+                0 / 100
+
+            </div>
+
+            <div
+                class="progress-label"
+                id="progressLabel">
+
+                Найдено секретов
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    id="progressFill">
+                </div>
+
+            </div>
+
+            <div
+                class="remaining"
+                id="remainingText">
+
+                Осталось: 100
+
+            </div>
+
+        </div>
+
+
+        <div class="hint-card">
+
+            <div
+                class="hint-label"
+                id="hintLabel">
+
+                ПОДСКАЗКА
+
+            </div>
+
+            <div
+                class="hint-text"
+                id="hintText">
+
+                Первый секрет находится прямо перед тобой.
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="next-hint"
+            onclick="nextHint()"
+            id="nextHintButton">
+
+            Следующая подсказка
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ОКНО СЕКРЕТА
+========================= -->
+
+<div
+    class="popup"
+    id="popup">
+
+    <div class="popup-box">
+
+        <h2 id="popupTitle">
+            ◈ СЕКРЕТ НАЙДЕН
+        </h2>
+
+        <p id="popupText">
+            Ты нашёл секрет!
+        </p>
+
+        <button
+            class="close"
+            onclick="closePopup()"
+            id="closeButton">
+
+            Продолжить
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="flash"></div>
+
+
+<script>
+
+/* =========================
+   ДАННЫЕ
+========================= */
+
+const totalSecrets = 100;
+
+let found =
+    Number(localStorage.getItem("secretFound")) || 0;
+
+let language =
+    localStorage.getItem("language") || "ru";
+
+let theme =
+    localStorage.getItem("theme") || "dark";
+
+let hintIndex = 0;
+
+
+/* =========================
+   ЭЛЕМЕНТЫ
+========================= */
+
+const foundElement =
+    document.getElementById("found");
+
+const remainingElement =
+    document.getElementById("remaining");
+
+const progressNumber =
+    document.getElementById("progressNumber");
+
+const progressFill =
+    document.getElementById("progressFill");
+
+const remainingText =
+    document.getElementById("remainingText");
+
+
+/* =========================
+   ПРОГРЕСС
+========================= */
+
+function updateProgress(){
+
+    if(found > totalSecrets){
+        found = totalSecrets;
+    }
+
+    const remaining =
+        totalSecrets - found;
+
+    foundElement.textContent =
+        found + " / " + totalSecrets;
+
+    remainingElement.textContent =
+        remaining;
+
+    progressNumber.textContent =
+        found + " / " + totalSecrets;
+
+    remainingText.textContent =
+        translations[language].remaining +
+        ": " +
+        remaining;
+
+    progressFill.style.width =
+        (found / totalSecrets * 100) + "%";
+}
+
+
+/* =========================
+   ПЕРВАЯ СЕКРЕТКА
+========================= */
+
+function secretFound(id){
+
+    const key = "secret_" + id;
+
+    if(localStorage.getItem(key)){
+        return;
+    }
+
+    localStorage.setItem(key,"true");
+
+    found++;
+
+    localStorage.setItem(
+        "secretFound",
+        found
+    );
+
+    const flash =
+        document.getElementById("flash");
+
+    flash.classList.remove("flash");
+
+    void flash.offsetWidth;
+
+    flash.classList.add("flash");
+
+    updateProgress();
+
+    document.getElementById("popup").style.display =
+        "flex";
+}
+
+
+/* =========================
+   ПОИСК
+========================= */
+
+function search(){
+
+    const messages =
+        translations[language].searchMessages;
+
+    const random =
+        messages[
+            Math.floor(
+                Math.random() * messages.length
+            )
+        ];
+
+    alert(random);
+}
+
+
+/* =========================
+   НАСТРОЙКИ
+========================= */
+
+function openSettings(){
+
+    document.getElementById(
+        "settingsOverlay"
+    ).style.display = "flex";
+
+}
+
+function closeSettings(){
+
+    document.getElementById(
+        "settingsOverlay"
+    ).style.display = "none";
+
+}
+
+
+/* =========================
+   ПОДСКАЗКИ
+========================= */
+
+function openHints(){
+
+    updateProgress();
+
+    document.getElementById(
+        "hintsOverlay"
+    ).style.display = "flex";
+
+}
+
+function closeHints(){
+
+    document.getElementById(
+        "hintsOverlay"
+    ).style.display = "none";
+
+}
+
+
+/* =========================
+   ПОДСКАЗКИ
+========================= */
+
+const hints = {
+
+    ru:[
+        "Первый секрет находится прямо перед тобой.",
+        "Иногда кнопка — это не просто кнопка.",
+        "Проверь элементы, которые выглядят слишком обычными.",
+        "Не доверяй всему, что показывает сайт.",
+        "Некоторые секреты лучше искать по краям."
+    ],
+
+    en:[
+        "The first secret is right in front of you.",
+        "Sometimes a button is not just a button.",
+        "Check elements that look too ordinary.",
+        "Do not trust everything the site shows.",
+        "Some secrets are better found near the edges."
+    ],
+
+    uk:[
+        "Перший секрет знаходиться прямо перед тобою.",
+        "Іноді кнопка — це не просто кнопка.",
+        "Перевір елементи, які виглядають занадто звичайними.",
+        "Не довіряй усьому, що показує сайт.",
+        "Деякі секрети краще шукати біля країв."
+    ]
+
+};
+
+
+function nextHint(){
+
+    hintIndex++;
+
+    if(
+        hintIndex >= hints[language].length
+    ){
+        hintIndex = 0;
+    }
+
+    document.getElementById(
+        "hintText"
+    ).textContent =
+        hints[language][hintIndex];
+
+}
+
+
+/* =========================
+   ЗАКРЫТЬ СЕКРЕТ
+========================= */
+
+function closePopup(){
+
+    document.getElementById(
+        "popup"
+    ).style.display = "none";
+
+}
+
+
+/* =========================
+   ТЕМА
+========================= */
+
+function changeTheme(value){
+
+    theme = value;
+
+    localStorage.setItem(
+        "theme",
+        theme
+    );
+
+    if(theme === "light"){
+
+        document.body.classList.add("light");
+
+    }else{
+
+        document.body.classList.remove("light");
+
+    }
+
+}
+
+
+/* =========================
+   ЯЗЫКИ
+========================= */
+
+const translations = {
+
+    ru:{
+
+        system:"СИСТЕМА ОНЛАЙН",
+        subtitle:"Не ищи очевидное.",
+        found:"НАЙДЕНО",
+        remainingLabel:"ОСТАЛОСЬ",
+        status:"СТАТУС",
+        search:"ИСКАТЬ ЧТО-НИБУДЬ...",
+        hints:"💡 Подсказки",
+        hintsDesc:"Посмотреть прогресс и подсказки секретов",
+        settings:"Настройки",
+        settingsSub:"Настрой Secret Hunt",
+        language:"Язык",
+        languageDesc:"Выберите язык сайта",
+        sound:"Звук",
+        soundDesc:"Звуки интерфейса",
+        theme:"Тема",
+        themeDesc:"Внешний вид сайта",
+        dark:"Тёмная",
+        light:"Светлая",
+        hintTitle:"Подсказки",
+        foundSecrets:"Найдено секретов",
+        remaining:"Осталось",
+        hint:"ПОДСКАЗКА",
+        nextHint:"Следующая подсказка",
+        popupTitle:"◈ СЕКРЕТ НАЙДЕН",
+        popupText:"Ты нашёл секрет!",
+        continue:"Продолжить",
+
+        searchMessages:[
+            "Ничего очевидного не найдено.",
+            "Слишком очевидно.",
+            "Ты ищешь не там.",
+            "Система ничего не сообщает.",
+            "Интересно... ты действительно проверил всё?"
+        ]
+
+    },
+
+    en:{
+
+        system:"SYSTEM ONLINE",
+        subtitle:"Do not look for the obvious.",
+        found:"FOUND",
+        remainingLabel:"REMAINING",
+        status:"STATUS",
+        search:"SEARCH FOR SOMETHING...",
+        hints:"💡 Hints",
+        hintsDesc:"View progress and secret hints",
+        settings:"Settings",
+        settingsSub:"Customize Secret Hunt",
+        language:"Language",
+        languageDesc:"Choose website language",
+        sound:"Sound",
+        soundDesc:"Interface sounds",
+        theme:"Theme",
+        themeDesc:"Website appearance",
+        dark:"Dark",
+        light:"Light",
+        hintTitle:"Hints",
+        foundSecrets:"Secrets found",
+        remaining:"Remaining",
+        hint:"HINT",
+        nextHint:"Next hint",
+        popupTitle:"◈ SECRET FOUND",
+        popupText:"You found a secret!",
+        continue:"Continue",
+
+        searchMessages:[
+            "Nothing obvious was found.",
+            "Too obvious.",
+            "You're looking in the wrong place.",
+            "The system says nothing.",
+            "Interesting... did you really check everything?"
+        ]
+
+    },
+
+    uk:{
+
+        system:"СИСТЕМА ОНЛАЙН",
+        subtitle:"Не шукай очевидного.",
+        found:"ЗНАЙДЕНО",
+        remainingLabel:"ЗАЛИШИЛОСЯ",
+        status:"СТАТУС",
+        search:"ШУКАТИ ЩОСЬ...",
+        hints:"💡 Підказки",
+        hintsDesc:"Переглянути прогрес і підказки секретів",
+        settings:"Налаштування",
+        settingsSub:"Налаштуй Secret Hunt",
+        language:"Мова",
+        languageDesc:"Оберіть мову сайту",
+        sound:"Звук",
+        soundDesc:"Звуки інтерфейсу",
+        theme:"Тема",
+        themeDesc:"Вигляд сайту",
+        dark:"Темна",
+        light:"Світла",
+        hintTitle:"Підказки",
+        foundSecrets:"Знайдено секретів",
+        remaining:"Залишилося",
+        hint:"ПІДКАЗКА",
+        nextHint:"Наступна підказка",
+        popupTitle:"◈ СЕКРЕТ ЗНАЙДЕНО",
+        popupText:"Ти знайшов секрет!",
+        continue:"Продовжити",
+
+        searchMessages:[
+            "Нічого очевидного не знайдено.",
+            "Занадто очевидно.",
+            "Ти шукаєш не там.",
+            "Система нічого не повідомляє.",
+            "Цікаво... ти справді все перевірив?"
+        ]
+
+    }
+
+};
+
+
+/* =========================
+   СМЕНА ЯЗЫКА
+========================= */
+
+function changeLanguage(value){
+
+    language = value;
+
+    localStorage.setItem(
+        "language",
+        language
+    );
+
+    applyLanguage();
+
+}
+
+
+/* =========================
+   ПРИМЕНЕНИЕ ЯЗЫКА
+========================= */
+
+function applyLanguage(){
+
+    const t =
+        translations[language];
+
+    document.getElementById(
+        "systemStatus"
+    ).textContent = t.system;
+
+    document.getElementById(
+        "subtitle"
+    ).textContent = t.subtitle;
+
+    document.getElementById(
+        "foundLabel"
+    ).textContent = t.found;
+
+    document.getElementById(
+        "remainingLabel"
+    ).textContent = t.remainingLabel;
+
+    document.getElementById(
+        "statusLabel"
+    ).textContent = t.status;
+
+    document.getElementById(
+        "searchText"
+    ).textContent = t.search;
+
+    document.getElementById(
+        "hintsButtonTitle"
+    ).textContent = t.hints;
+
+    document.getElementById(
+        "hintsButtonDesc"
+    ).textContent = t.hintsDesc;
+
+    document.getElementById(
+        "settingsTitle"
+    ).textContent = t.settings;
+
+    document.getElementById(
+        "settingsSubtitle"
+    ).textContent = t.settingsSub;
+
+    document.getElementById(
+        "languageName"
+    ).textContent = t.language;
+
+    document.getElementById(
+        "languageDesc"
+    ).textContent = t.languageDesc;
+
+    document.getElementById(
+        "soundName"
+    ).textContent = t.sound;
+
+    document.getElementById(
+        "soundDesc"
+    ).textContent = t.soundDesc;
+
+    document.getElementById(
+        "themeName"
+    ).textContent = t.theme;
+
+    document.getElementById(
+        "themeDesc"
+    ).textContent = t.themeDesc;
+
+    document.getElementById(
+        "hintsTitle"
+    ).textContent = t.hintTitle;
+
+    document.getElementById(
+        "progressLabel"
+    ).textContent = t.foundSecrets;
+
+    document.getElementById(
+        "hintLabel"
+    ).textContent = t.hint;
+
+    document.getElementById(
+        "nextHintButton"
+    ).textContent = t.nextHint;
+
+    document.getElementById(
+        "popupTitle"
+    ).textContent = t.popupTitle;
+
+    document.getElementById(
+        "popupText"
+    ).textContent = t.popupText;
+
+    document.getElementById(
+        "closeButton"
+    ).textContent = t.continue;
+
+    document.querySelector(
+        '#themeSelect option[value="dark"]'
+    ).textContent = t.dark;
+
+    document.querySelector(
+        '#themeSelect option[value="light"]'
+    ).textContent = t.light;
+
+    updateProgress();
+
+}
+
+
+/* =========================
+   ЗАГРУЗКА
+========================= */
+
+document.getElementById(
+    "languageSelect"
+).value = language;
+
+document.getElementById(
+    "themeSelect"
+).value = theme;
+
+changeTheme(theme);
+
+applyLanguage();
+
+updateProgress();
+
+</script>
+
+</body>
+                </html>
+
+
+        
