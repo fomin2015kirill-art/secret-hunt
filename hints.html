@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Secret Hunt — Hints</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 20% 20%,#202936 0,transparent 30%),
+        radial-gradient(circle at 80% 80%,#171d26 0,transparent 35%),
+        #080b10;
+    color:#e8edf3;
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    transition:.35s;
+}
+
+button{
+    font:inherit;
+}
+
+.app{
+    width:min(92%,720px);
+}
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.logo{
+    font-size:14px;
+    letter-spacing:5px;
+    font-weight:bold;
+}
+
+.back{
+    padding:10px 15px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.035);
+    color:#8995a0;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.back:hover{
+    color:white;
+    background:rgba(255,255,255,.07);
+    transform:translateY(-2px);
+}
+
+.panel{
+    padding:35px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:28px;
+    background:rgba(255,255,255,.035);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.07),
+        0 25px 70px rgba(0,0,0,.55);
+}
+
+.title{
+    margin:0;
+    font-size:42px;
+    letter-spacing:8px;
+    font-weight:800;
+}
+
+.subtitle{
+    margin-top:10px;
+    color:#717d88;
+}
+
+
+/* ПРОГРЕСС */
+
+.progress-box{
+    margin-top:30px;
+    padding:20px;
+    border-radius:20px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.progress-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.progress-number{
+    font-size:30px;
+    font-weight:bold;
+}
+
+.progress-label{
+    color:#687581;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.progress-bar{
+    height:8px;
+    margin-top:16px;
+    border-radius:20px;
+    background:rgba(255,255,255,.06);
+    overflow:hidden;
+}
+
+.progress-fill{
+    height:100%;
+    width:0%;
+    border-radius:20px;
+    background:#79ffa8;
+    box-shadow:0 0 15px rgba(121,255,168,.45);
+    transition:.5s;
+}
+
+.remaining{
+    margin-top:12px;
+    color:#7f8b96;
+    font-size:12px;
+}
+
+
+/* ПОДСКАЗКА */
+
+.hint-card{
+    margin-top:15px;
+    padding:25px;
+    border-radius:20px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(121,255,168,.12);
+    box-shadow:
+        inset 1px 1px 1px rgba(255,255,255,.04),
+        0 10px 30px rgba(0,0,0,.3);
+}
+
+.hint-number{
+    color:#79ffa8;
+    font-size:10px;
+    letter-spacing:3px;
+}
+
+.hint-text{
+    margin-top:14px;
+    color:#b5bec7;
+    font-size:15px;
+    line-height:1.6;
+}
+
+.buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:15px;
+}
+
+.hint-button{
+    padding:15px;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.07);
+    background:rgba(255,255,255,.035);
+    color:#aeb8c2;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.hint-button:hover{
+    transform:translateY(-2px);
+    background:rgba(255,255,255,.06);
+    color:white;
+}
+
+.hint-button.next{
+    border-color:rgba(121,255,168,.15);
+    background:rgba(121,255,168,.06);
+}
+
+.footer{
+    margin-top:18px;
+    display:flex;
+    justify-content:space-between;
+    color:#505b66;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+
+/* СВЕТЛАЯ ТЕМА */
+
+body.light{
+    background:
+        radial-gradient(circle at 20% 20%,#fff 0,transparent 35%),
+        radial-gradient(circle at 80% 80%,#dce3ea 0,transparent 40%),
+        #eef2f5;
+    color:#17202a;
+}
+
+body.light .panel{
+    background:rgba(255,255,255,.68);
+    border-color:rgba(0,0,0,.09);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.9),
+        0 25px 70px rgba(50,60,70,.18);
+}
+
+body.light .subtitle{
+    color:#66727d;
+}
+
+body.light .back{
+    background:rgba(255,255,255,.75);
+    color:#46515c;
+    border-color:rgba(0,0,0,.1);
+}
+
+body.light .progress-box,
+body.light .hint-card{
+    background:rgba(0,0,0,.035);
+    border-color:rgba(0,0,0,.08);
+}
+
+body.light .progress-label,
+body.light .remaining{
+    color:#68737d;
+}
+
+body.light .hint-text{
+    color:#52606c;
+}
+
+body.light .hint-button{
+    color:#46515c;
+    background:rgba(0,0,0,.025);
+    border-color:rgba(0,0,0,.08);
+}
+
+
+/* МОБИЛЬНЫЙ */
+
+@media(max-width:600px){
+
+    body{
+        padding:15px;
+    }
+
+    .panel{
+        padding:25px 18px;
+    }
+
+    .title{
+        font-size:32px;
+        letter-spacing:5px;
+    }
+
+    .buttons{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- ВЕРХ -->
+
+    <div class="top">
+
+        <div class="logo">
+            S.H
+        </div>
+
+        <button
+            class="back"
+            onclick="goBack()"
+            id="backButton">
+
+            ← Назад
+
+        </button>
+
+    </div>
+
+
+    <!-- ОСНОВНАЯ ПАНЕЛЬ -->
+
+    <main class="panel">
+
+        <h1
+            class="title"
+            id="title">
+
+            ПОДСКАЗКИ
+
+        </h1>
+
+
+        <div
+            class="subtitle"
+            id="subtitle">
+
+            Не всё является тем, чем кажется.
+
+        </div>
+
+
+        <!-- ПРОГРЕСС -->
+
+        <div class="progress-box">
+
+            <div class="progress-top">
+
+                <div
+                    class="progress-number"
+                    id="progressNumber">
+
+                    0 / 100
+
+                </div>
+
+                <div
+                    class="progress-label"
+                    id="progressLabel">
+
+                    НАЙДЕНО СЕКРЕТОВ
+
+                </div>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    id="progressFill">
+                </div>
+
+            </div>
+
+
+            <div
+                class="remaining"
+                id="remainingText">
+
+                Осталось: 100
+
+            </div>
+
+        </div>
+
+
+        <!-- ТЕКУЩАЯ ПОДСКАЗКА -->
+
+        <div class="hint-card">
+
+            <div
+                class="hint-number"
+                id="hintNumber">
+
+                ПОДСКАЗКА 1
+
+            </div>
+
+
+            <div
+                class="hint-text"
+                id="hintText">
+
+                Первый секрет находится прямо перед тобой.
+
+            </div>
+
+        </div>
+
+
+        <!-- КНОПКИ -->
+
+        <div class="buttons">
+
+            <button
+                class="hint-button"
+                onclick="previousHint()"
+                id="previousButton">
+
+                ← Предыдущая
+
+            </button>
+
+
+            <button
+                class="hint-button next"
+                onclick="nextHint()"
+                id="nextButton">
+
+                Следующая →
+
+            </button>
+
+        </div>
+
+
+        <div class="footer">
+
+            <span>
+                SECRET HUNT
+            </span>
+
+            <span>
+                HINTS
+            </span>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+/* =========================
+   НАСТРОЙКИ
+========================= */
+
+const totalSecrets = 100;
+
+let language =
+    localStorage.getItem("language") || "ru";
+
+let theme =
+    localStorage.getItem("theme") || "dark";
+
+let hintIndex = 0;
+
+
+/* =========================
+   ПОДСКАЗКИ
+========================= */
+
+const hints = {
+
+    ru:[
+        "Первый секрет находится прямо перед тобой.",
+        "Иногда кнопка — это не просто кнопка.",
+        "Проверь элементы, которые выглядят слишком обычными.",
+        "Не доверяй всему, что показывает сайт.",
+        "Некоторые секреты лучше искать по краям.",
+        "Попробуй внимательно изучить заголовок.",
+        "Не забывай проверять то, на что обычно не обращают внимания.",
+        "Иногда секрет может быть спрятан прямо на виду.",
+        "Поищи место, которое кажется совершенно бесполезным.",
+        "Ты уверен, что уже проверил всё?"
+    ],
+
+    en:[
+        "The first secret is right in front of you.",
+        "Sometimes a button is not just a button.",
+        "Check elements that look too ordinary.",
+        "Do not trust everything the site shows.",
+        "Some secrets are better found near the edges.",
+        "Try carefully examining the title.",
+        "Do not forget to check things people usually ignore.",
+        "Sometimes a secret can be hidden in plain sight.",
+        "Look for a place that seems completely useless.",
+        "Are you sure you checked everything?"
+    ],
+
+    uk:[
+        "Перший секрет знаходиться прямо перед тобою.",
+        "Іноді кнопка — це не просто кнопка.",
+        "Перевір елементи, які виглядають занадто звичайними.",
+        "Не довіряй усьому, що показує сайт.",
+        "Деякі секрети краще шукати біля країв.",
+        "Спробуй уважно дослідити заголовок.",
+        "Не забувай перевіряти те, на що зазвичай не звертають уваги.",
+        "Іноді секрет може бути захований просто на видноті.",
+        "Пошукай місце, яке здається абсолютно непотрібним.",
+        "Ти впевнений, що перевірив усе?"
+    ]
+
+};
+
+
+/* =========================
+   ТЕКСТЫ
+========================= */
+
+const translations = {
+
+    ru:{
+        title:"ПОДСКАЗКИ",
+        subtitle:"Не всё является тем, чем кажется.",
+        progress:"НАЙДЕНО СЕКРЕТОВ",
+        remaining:"Осталось",
+        hint:"ПОДСКАЗКА",
+        previous:"← Предыдущая",
+        next:"Следующая →",
+        back:"← Назад"
+    },
+
+    en:{
+        title:"HINTS",
+        subtitle:"Not everything is what it seems.",
+        progress:"SECRETS FOUND",
+        remaining:"Remaining",
+        hint:"HINT",
+        previous:"← Previous",
+        next:"Next →",
+        back:"← Back"
+    },
+
+    uk:{
+        title:"ПІДКАЗКИ",
+        subtitle:"Не все є тим, чим здається.",
+        progress:"ЗНАЙДЕНО СЕКРЕТІВ",
+        remaining:"Залишилося",
+        hint:"ПІДКАЗКА",
+        previous:"← Попередня",
+        next:"Наступна →",
+        back:"← Назад"
+    }
+
+};
+
+
+/* =========================
+   ПРОГРЕСС
+========================= */
+
+function updateProgress(){
+
+    let found =
+        Number(localStorage.getItem("secretFound")) || 0;
+
+    if(found > totalSecrets){
+        found = totalSecrets;
+    }
+
+    const remaining =
+        totalSecrets - found;
+
+    document.getElementById(
+        "progressNumber"
+    ).textContent =
+        found + " / " + totalSecrets;
+
+    document.getElementById(
+        "remainingText"
+    ).textContent =
+        translations[language].remaining +
+        ": " +
+        remaining;
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        (found / totalSecrets * 100) + "%";
+
+}
+
+
+/* =========================
+   ПОКАЗАТЬ ПОДСКАЗКУ
+========================= */
+
+function showHint(){
+
+    const list =
+        hints[language];
+
+    document.getElementById(
+        "hintNumber"
+    ).textContent =
+        translations[language].hint +
+        " " +
+        (hintIndex + 1);
+
+
+    document.getElementById(
+        "hintText"
+    ).textContent =
+        list[hintIndex];
+
+}
+
+
+/* =========================
+   СЛЕДУЮЩАЯ
+========================= */
+
+function nextHint(){
+
+    hintIndex++;
+
+    if(
+        hintIndex >= hints[language].length
+    ){
+        hintIndex = 0;
+    }
+
+    showHint();
+
+}
+
+
+/* =========================
+   ПРЕДЫДУЩАЯ
+========================= */
+
+function previousHint(){
+
+    hintIndex--;
+
+    if(hintIndex < 0){
+
+        hintIndex =
+            hints[language].length - 1;
+
+    }
+
+    showHint();
+
+}
+
+
+/* =========================
+   НАЗАД
+========================= */
+
+function goBack(){
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* =========================
+   ТЕМА
+========================= */
+
+function applyTheme(){
+
+    if(theme === "light"){
+
+        document.body.classList.add("light");
+
+    }else{
+
+        document.body.classList.remove("light");
+
+    }
+
+}
+
+
+/* =========================
+   ЯЗЫК
+========================= */
+
+function applyLanguage(){
+
+    const t =
+        translations[language];
+
+    document.getElementById(
+        "title"
+    ).textContent = t.title;
+
+    document.getElementById(
+        "subtitle"
+    ).textContent = t.subtitle;
+
+    document.getElementById(
+        "progressLabel"
+    ).textContent = t.progress;
+
+    document.getElementById(
+        "previousButton"
+    ).textContent = t.previous;
+
+    document.getElementById(
+        "nextButton"
+    ).textContent = t.next;
+
+    document.getElementById(
+        "backButton"
+    ).textContent = t.back;
+
+    updateProgress();
+
+    showHint();
+
+}
+
+
+/* =========================
+   ЗАПУСК
+========================= */
+
+applyTheme();
+
+applyLanguage();
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
